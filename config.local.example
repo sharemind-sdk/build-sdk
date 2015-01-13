@@ -1,0 +1,92 @@
+#
+# A config.local file with cmake semantics may be created in the source or build
+# directory for this repository. That file will be interpreted when running
+# cmake.
+#
+
+#
+# First we load a OS-specific or common profile which sets a few configuration
+# options, such as additional dependencies which need to be built. See the
+# /profiles/ directory for the defined profiles, and read their comments. The
+# profile named "common" builds no dependencies. For dependency customization
+# modify the Thing_SKIP variable as show below.
+#
+#   INCLUDE("${CMAKE_CURRENT_SOURCE_DIR}/profiles/DebianWheezy.cmake" REQUIRED)
+#
+
+INCLUDE("${CMAKE_CURRENT_SOURCE_DIR}/profiles/common.cmake" REQUIRED)
+
+
+#
+# To skip or force building of certain targets or dependencies (see
+# CMakeLists.txt for the names of targets), use the following command:
+#
+#   LIST(APPEND Thing_SKIP "target1" "target2" ...)
+#   LIST(REMOVE_ITEM Thing_SKIP "target1" "target2" ...)
+#
+
+#
+# If SHAREMIND_INSTALL_PREFIX is set, CMAKE_INSTALL_PREFIX is set to its value.
+# Otherwise if CMAKE_BUILD_TYPE equals "Release", CMAKE_INSTALL_PREFIX is left
+# unchanged. Otherwise CMAKE_INSTALL_PREFIX is set to install the output files
+# to "${CMAKE_CURRENT_SOURCE_DIR}/prefix".
+#
+#   SET(SHAREMIND_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/prefix")
+#
+
+
+#
+# To override aspects of building the subtargets, define a macro or function
+# called "Thing_OVERRIDE". This command must act similarily to the
+# "ExternalProject_Add" function, but eventually call "Thing_addFromOverride"
+# instead. For example:
+#
+#   FUNCTION(Thing_OVERRIDE name)
+#     MESSAGE(STATUS "Adding external project: ${name}")
+#     # Change Boost URL:
+#     IF("${name}" STREQUAL "boost")
+#       # Keep a local copy of the downloaded file to prevent redownloads:
+#       Thing_removeArgs("${ARGN}" URL args)
+#       Thing_addFromOverride("${name}" "${args}"
+#                             URL "/home/user/downloads/boost_1_56_0.tar.bz2")
+#     ELSEIF("${name}" STREQUAL "libfmodapi")
+#       # Configure the build process to use an out-of-tree preconfigured copy
+#       # of libfmodapi, where "make && make install" can be run. NOTE that the
+#       # preconfigured location should use the correct prefix and installation
+#       # paths, so it can find its dependencies and install its output to a
+#       # location where its reverse dependencies can find their required files.
+#       # For CMake subprojects this usually means configuring the correct
+#       # CMAKE_PREFIX_PATH and CMAKE_INSTALL_PREFIX variables.
+#       Thing_remotebuild("${name}"
+#                         "${ARGN}"
+#                         "/home/user/dev/libfmodapi.git/b"
+#                         "/home/user/dev/libfmodapi.git"
+#                         args)
+#       # Uncomment this if it installs elsewhere:
+#       #Thing_resetArgs("${args}" "INSTALL_DIR" "/new/path" args)
+#       Thing_addFromOverride("${name}" "${args}")
+#     ELSEIF("${name}" STREQUAL "emulator")
+#       # Add some more arguments to CMake:
+#       Thing_addFromOverride("${name}" "${ARGN}"
+#                             CMAKE_ARGS "-DSHAREMIND_RELEASE_BUILD=TRUE")
+#     ELSE()
+#       Thing_addFromOverride("${name}" "${ARGN}")
+#     ENDIF()
+#   ENDFUNCTION()
+#
+# Note that this allows to change all aspects of these targets, including (but
+# not limited to) changing fetch commands, allowing out-of-tree builds, changing
+# dependencies, passing variables etc.
+#
+# NOTE: Thing_OVERRIDE is not called if the target is listed in the Thing_SKIP
+# variable (see below).
+#
+
+
+#
+# To run CMake code at the end of CMakeLists.txt, define a macro or function
+# named Sharemind_hook_postLists. For example:
+#
+#   MACRO(Sharemind_hook_postLists)
+#     MESSAGE(STATUS "Hello from Sharemind_hook_postLists()!")
+#   ENDMACRO()

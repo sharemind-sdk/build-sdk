@@ -1,0 +1,10 @@
+--- boost/boost/property_tree/ini_parser.hpp	2014-08-27 11:17:16.308963489 +0300
++++ boost/boost/property_tree/ini_parser.hpp	2014-08-27 11:17:21.027963455 +0300
+@@ -219,7 +219,6 @@
+         using detail::check_dupes;
+ 
+         typedef typename Ptree::key_type::value_type Ch;
+-        typedef std::basic_string<Ch> Str;
+ 
+         BOOST_ASSERT(validate_flags(flags));
+         (void)flags;

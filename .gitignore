@@ -1,0 +1,52 @@
+# Temporary CMake ExternalProject extraction directories:
+/ex-
+
+# The default install directory:
+/prefix/
+
+# The user configuration file:
+/config.local
+
+# Different dependencies:
+/boost/
+/cryptopp/
+/gmp/
+/libsortnetwork/
+/mpfr/
+/tbb/
+
+# Different subprojects:
+/cheaders/
+/cxxheaders/
+/emulator/
+/exprtk/
+/facility_loghard/
+/facility_executionprofiler/
+/libas/
+/libexecutable/
+/libexecutionprofiler/
+/libfmodapi/
+/libfmodapicxx/
+/libicontroller/
+/libmodapi/
+/libmodapicxx/
+/libmutexes/
+/librandom/
+/libsoftfloat/
+/libsoftfloat_math/
+/libvm/
+/libvmcxx/
+/libvmi/
+/loghard/
+/mod_algorithms/
+/mod_executionprofiler/
+/mod_shared3p_emu/
+/sbdump/
+/secrec/
+/stdlib/
+/vm_m4/
+
+# Different temporary build directories (user-specific):
+/b/
+/build/
+/qtcreator-build/

@@ -1,0 +1,7 @@
+CMakeLists.txt whitespace=space-before-tab,tab-in-indent,trailing-space
+*.c            whitespace=space-before-tab,tab-in-indent,trailing-space
+*.cpp          whitespace=space-before-tab,tab-in-indent,trailing-space
+*.h            whitespace=space-before-tab,tab-in-indent,trailing-space
+
+/.git* export-ignore
+/.mailmap export-ignore
