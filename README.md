@@ -14,5 +14,5 @@ cmake ..
 make
 ```
 
-After this, everything should already be installed in the prefix/ directory
-under /path/to/this/repository/.
+After this, everything should already be installed in the `prefix/` subdirectory
+under `/path/to/this/repository/`.
