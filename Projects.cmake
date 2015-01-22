@@ -117,7 +117,7 @@ SharemindAddRepository(libsoftfloat_math
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libsoftfloat_math.git")
 
 SharemindAddRepository(cxxheaders
-  DEPENDS boost
+  DEPENDS boost cheaders
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/cxxheaders.git")
 
 SharemindAddRepository(vm_m4
