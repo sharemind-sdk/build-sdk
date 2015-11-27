@@ -21,8 +21,8 @@
 # To build on Debian Wheezy with this profile you need to "apt-get install" at
 # least the following dependencies:
 #
-#   git make gcc g++ libbz2-dev libglib2.0-dev libgmp-dev libssl-dev
-#   libcrypto++-dev libbison-dev flex libmpfr-dev doxygen libtbb-dev
+#   git make gcc g++ libbz2-dev libglib2.0-dev libmpfr-dev libcrypto++-dev
+#   libbison-dev flex libmpfr-dev doxygen libtbb-dev libhdf5-dev
 #
 # PS: Note that you must also manually install CMake 2.8.12 or later.
 #
