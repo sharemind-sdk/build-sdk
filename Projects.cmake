@@ -168,8 +168,12 @@ SharemindAddRepository(libmodapicxx
   DEPENDS cxxheaders libmodapi
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libmodapicxx.git")
 
+SharemindAddRepository(libprocessfacility
+  DEPENDS libmodapi
+  GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libprocessfacility.git")
+
 SharemindAddRepository(libfmodapi
-  DEPENDS cheaders libmodapi
+  DEPENDS cheaders libmodapi libprocessfacility
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libfmodapi.git")
 
 SharemindAddRepository(libfmodapicxx
@@ -190,10 +194,6 @@ SharemindAddRepository(loghard
 
 SharemindAddRepository(libconsensusservice
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libconsensusservice.git")
-
-SharemindAddRepository(libprocessfacility
-  DEPENDS libmodapi
-  GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libprocessfacility.git")
 
 SharemindAddRepository(libdatastoremanager
   DEPENDS cxxheaders libprocessfacility
