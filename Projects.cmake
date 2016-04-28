@@ -93,8 +93,8 @@ SharemindAddExternalDependency(libsortnetwork
   URL_MD5 8923fd56604da0c00675092b1f095492
   PATCH_COMMAND patch -p1 < "${CMAKE_CURRENT_SOURCE_DIR}/patches/libsortnetwork-1.1.0.patch"
   CONFIGURE_COMMAND ./configure "--prefix=${CMAKE_INSTALL_PREFIX}"
-  BUILD_COMMAND env "echo=echo" make
-  INSTALL_COMMAND env "echo=echo" make install
+  BUILD_COMMAND env "echo=echo" $(MAKE)
+  INSTALL_COMMAND env "echo=echo" $(MAKE) install
   BUILD_IN_SOURCE 1)
 
 SharemindAddExternalDependency(exprtk
@@ -147,7 +147,8 @@ SharemindAddRepository(libmutexes
 
 SharemindAddRepository(cxxheaders
   DEPENDS boost cheaders libmutexes
-  GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/cxxheaders.git")
+  GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/cxxheaders.git"
+  SHAREMIND_CHECK_COMMAND $(MAKE) check)
 
 SharemindAddRepository(vm_m4
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/vm_m4.git")
@@ -169,7 +170,7 @@ SharemindAddRepository(libmodapicxx
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libmodapicxx.git")
 
 SharemindAddRepository(libprocessfacility
-  DEPENDS libmodapi
+  DEPENDS cheaders libmodapi
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libprocessfacility.git")
 
 SharemindAddRepository(libfmodapi
@@ -216,7 +217,7 @@ SharemindAddRepository(libicontroller
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libicontroller.git")
 
 SharemindAddRepository(pdkheaders
-  DEPENDS libmodapi
+  DEPENDS cxxheaders libmodapi
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/pdkheaders.git")
 
 SharemindAddRepository(libemulator_protocols
