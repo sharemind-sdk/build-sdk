@@ -8,6 +8,7 @@
 /config.local
 
 # Different dependencies:
+/cpp_redis/
 /boost/
 /cryptopp/
 /gmp/
@@ -48,6 +49,7 @@
 /mod_aby_emu/
 /mod_algorithms/
 /mod_executionprofiler/
+/mod_keydb/
 /mod_shared3p_emu/
 /mod_spdz_fresco_emu/
 /mod_tabledb/

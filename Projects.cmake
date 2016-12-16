@@ -63,17 +63,6 @@ SharemindAddExternalDependency(cryptopp
   URL_MD5 7ed022585698df48e65ce9218f6c6a67
   PATCH_COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/patches/crypto++-5.6.2-CMakeLists.txt" CMakeLists.txt)
 
-SharemindAddExternalDependency(tbb
-# URL "http://www.threadingbuildingblocks.org/sites/default/files/software_releases/source/tbb42_20140122oss_src.tgz"
-  URL "${SHAREMIND_DEPENDENCIES_ROOT}/tbb42_20140122oss_src.tgz"
-  URL_HASH SHA512=e4391666bdacd6990ed23cf3c8635b18f727e6e794cadba38c2bbe9113990b955f9f341316a541b4b1b5757ec9af9ac0926a56b4a2d9c2485e3b0a6c6aa888ca
-  URL_MD5 70345f907f5ffe9b2bc3b7ed0d6508bc
-  CONFIGURE_COMMAND ${Thing_VoidCommand}
-  INSTALL_COMMAND ${CMAKE_COMMAND}
-                  "-DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}"
-                  -P "${CMAKE_CURRENT_SOURCE_DIR}/patches/tbb-install.cmake"
-  BUILD_IN_SOURCE 1)
-
 SharemindAddExternalDependency(boost
 # URL "http://downloads.sourceforge.net/project/boost/boost/1.56.0/boost_1_56_0.tar.bz2"
   URL "${SHAREMIND_DEPENDENCIES_ROOT}/boost_1_56_0.tar.bz2"
@@ -130,6 +119,12 @@ SharemindAddExternalDependency(hdf5
                                 "--without-zlib"
   BUILD_IN_SOURCE 1)
 
+SharemindAddExternalDependency(cpp_redis
+  URL "https://github.com/Cylix/cpp_redis/tarball/e4d9568121340485b1126d0a40538718297cab11"
+  DOWNLOAD_NAME "cpp_redis.tar.gz"
+  URL_HASH SHA512=538015faf3706971f93e4d811ff26331ae99f87c146e91dbc55d1e6097345726922506ad4bb262cb8dbb98115b363c4280df8d35d862fb6692903564a12b8fdd
+  )
+
 SharemindAddRepository(libsoftfloat
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libsoftfloat.git")
 
@@ -141,12 +136,8 @@ SharemindAddRepository(libsoftfloat_math
   DEPENDS cheaders libsoftfloat
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libsoftfloat_math.git")
 
-SharemindAddRepository(libmutexes
-  DEPENDS tbb
-  GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libmutexes.git")
-
 SharemindAddRepository(cxxheaders
-  DEPENDS boost cheaders libmutexes
+  DEPENDS boost cheaders
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/cxxheaders.git"
   SHAREMIND_CHECK_COMMAND $(MAKE) check)
 
@@ -217,7 +208,7 @@ SharemindAddRepository(libicontroller
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libicontroller.git")
 
 SharemindAddRepository(pdkheaders
-  DEPENDS cxxheaders libmodapi
+  DEPENDS libmodapi cxxheaders
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/pdkheaders.git")
 
 SharemindAddRepository(libemulator_protocols
@@ -239,6 +230,10 @@ SharemindAddRepository(mod_spdz_fresco_emu
 SharemindAddRepository(libdbcommon
   DEPENDS boost cheaders cxxheaders libmodapi libvm loghard
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libdbcommon.git")
+
+SharemindAddRepository(mod_keydb
+  DEPENDS boost cpp_redis libconsensusservice libdatastoremanager libmodapi loghard pdkheaders
+  GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/mod_keydb.git")
 
 SharemindAddRepository(mod_tabledb
   DEPENDS boost libconsensusservice libdatastoremanager libdbcommon libmodapi loghard
