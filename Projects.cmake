@@ -57,11 +57,11 @@ SharemindAddExternalDependency(mpfr
 UNSET(mpfr_withGmp)
 
 SharemindAddExternalDependency(cryptopp
-# URL "http://www.cryptopp.com/cryptopp562.zip"
-  URL "${SHAREMIND_DEPENDENCIES_ROOT}/cryptopp562.zip"
-  URL_HASH SHA512=016ca7ebad1091d67ad0bc5ccb7549d96d4af6b563d9d5a612cae27b3d1a3514c41b954e319fed91c820e8c701e3aa43da186e0864bf959ce4afd1539248ebbe
-  URL_MD5 7ed022585698df48e65ce9218f6c6a67
-  PATCH_COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/patches/crypto++-5.6.2-CMakeLists.txt" CMakeLists.txt)
+# URL "http://www.cryptopp.com/cryptopp565.zip"
+  URL "${SHAREMIND_DEPENDENCIES_ROOT}/cryptopp565.zip"
+  URL_HASH SHA512=f13718d02ca69b0129aaf9e767c9d2e0333aa7538355f9c63d9eaf1ff369062084a18dc01489439ebf37797b3ea81b01beb072057d47ec962bfb824ddc72abc7
+  URL_MD5 df5ef4647b4e978bba0cac79a83aaed5
+  PATCH_COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/patches/crypto++-5.6.5-CMakeLists.txt" CMakeLists.txt)
 
 SharemindAddExternalDependency(boost
 # URL "http://downloads.sourceforge.net/project/boost/boost/1.56.0/boost_1_56_0.tar.bz2"
@@ -87,8 +87,7 @@ SharemindAddExternalDependency(libsortnetwork
   BUILD_IN_SOURCE 1)
 
 SharemindAddExternalDependency(exprtk
-#  URL "https://github.com/ArashPartow/exprtk/tarball/ce2320489562192e2e81489d8978b9871bd1a4b2"
-  URL "${SHAREMIND_DEPENDENCIES_ROOT}/exprtk-ce232048.tar.gz"
+  URL "https://github.com/ArashPartow/exprtk/tarball/ce2320489562192e2e81489d8978b9871bd1a4b2"
   DOWNLOAD_NAME "exprtk-ce232048.tar.gz"
   URL_HASH SHA512=469b9099ae4fa7294b3a1d7ccd2a743e92872c81ae46e568f67dac35999d29cbb926a395969f694a087a0982ccc1764cc4d65c087e28bc37a8f9a607868b4d54
   URL_MD5 872400594e9b4b1f41db9641675ca8fe
