@@ -98,7 +98,8 @@ SharemindAddExternalDependency(hdf5
   URL "${SHAREMIND_DEPENDENCIES_ROOT}/hdf5-1.8.13.tar.bz2"
   URL_HASH SHA512=76dcd045c5dffe28478e9eb4ff5ff3f9d400b044c5af19d8b1040f8f0d1ecdce9c92d49f7df0450412214ff37023ea76ed031411a99dd4c2b848ebd3b332b853
   URL_MD5 b060bb137d6bd8accf8f0c4c59d2746d
-  CONFIGURE_COMMAND ./configure "--prefix=${CMAKE_INSTALL_PREFIX}/"
+  CONFIGURE_COMMAND env "CFLAGS=-w"
+                    ./configure "--prefix=${CMAKE_INSTALL_PREFIX}/"
                                 "--disable-dependency-tracking"
                                 "--enable-production"
                                 "--disable-deprecated-symbols"
@@ -113,6 +114,7 @@ SharemindAddExternalDependency(hdf5
                                 "--disable-fortran2003"
                                 "--disable-parallel"
                                 "--enable-threadsafe"
+                                "--disable-hl"
                                 "--without-szlib"
                                 "--with-pthread"
                                 "--without-zlib"
@@ -122,6 +124,8 @@ SharemindAddExternalDependency(cpp_redis
   URL "https://github.com/Cylix/cpp_redis/tarball/e4d9568121340485b1126d0a40538718297cab11"
   DOWNLOAD_NAME "cpp_redis.tar.gz"
   URL_HASH SHA512=538015faf3706971f93e4d811ff26331ae99f87c146e91dbc55d1e6097345726922506ad4bb262cb8dbb98115b363c4280df8d35d862fb6692903564a12b8fdd
+  PATCH_COMMAND patch -p1 <
+                "${CMAKE_CURRENT_SOURCE_DIR}/patches/cpp_redis-gcc7.patch"
   )
 
 SharemindAddRepository(libsoftfloat
@@ -160,7 +164,7 @@ SharemindAddRepository(libmodapicxx
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libmodapicxx.git")
 
 SharemindAddRepository(libprocessfacility
-  DEPENDS cheaders libmodapi
+  DEPENDS cheaders
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libprocessfacility.git")
 
 SharemindAddRepository(libfmodapi
@@ -187,7 +191,7 @@ SharemindAddRepository(libconsensusservice
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libconsensusservice.git")
 
 SharemindAddRepository(libdatastoremanager
-  DEPENDS cxxheaders libprocessfacility
+  DEPENDS cxxheaders
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libdatastoremanager.git")
 
 SharemindAddRepository(libexecutionmodelevaluator
@@ -198,6 +202,11 @@ SharemindAddRepository(libexecutionprofiler
   DEPENDS cxxheaders loghard
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libexecutionprofiler.git")
 
+SharemindAddRepository(librandom
+  DEPENDS boost cxxheaders
+  GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/librandom.git"
+  SHAREMIND_CHECK_COMMAND $(MAKE) check)
+
 SharemindAddRepository(mod_algorithms
   DEPENDS cheaders cxxheaders libmodapi libsoftfloat libsoftfloat_math libsortnetwork
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/mod_algorithms.git")
@@ -205,6 +214,10 @@ SharemindAddRepository(mod_algorithms
 SharemindAddRepository(libicontroller
   DEPENDS cxxheaders
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libicontroller.git")
+
+SharemindAddRepository(libconfiguration
+  DEPENDS boost cxxheaders
+  GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libconfiguration.git")
 
 SharemindAddRepository(pdkheaders
   DEPENDS libmodapi cxxheaders
@@ -215,7 +228,7 @@ SharemindAddRepository(libemulator_protocols
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libemulator_protocols.git")
 
 SharemindAddRepository(mod_shared3p_emu
-  DEPENDS boost cheaders cryptopp cxxheaders libemulator_protocols libexecutionmodelevaluator libexecutionprofiler libmodapi libsoftfloat libsoftfloat_math loghard pdkheaders
+  DEPENDS boost cheaders cryptopp cxxheaders libconfiguration libemulator_protocols libexecutionmodelevaluator libexecutionprofiler libmodapi libsoftfloat libsoftfloat_math loghard pdkheaders
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/mod_shared3p_emu.git")
 
 SharemindAddRepository(mod_aby_emu
@@ -227,19 +240,18 @@ SharemindAddRepository(mod_spdz_fresco_emu
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/mod_spdz_fresco_emu.git")
 
 SharemindAddRepository(libdbcommon
-  DEPENDS boost cheaders cxxheaders libmodapi libvm loghard
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libdbcommon.git")
 
 SharemindAddRepository(mod_keydb
-  DEPENDS boost cpp_redis libconsensusservice libdatastoremanager libmodapi loghard pdkheaders
+  DEPENDS boost cpp_redis libconsensusservice libdatastoremanager libmodapi libprocessfacility loghard pdkheaders
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/mod_keydb.git")
 
 SharemindAddRepository(mod_tabledb
-  DEPENDS boost libconsensusservice libdatastoremanager libdbcommon libmodapi loghard
+  DEPENDS boost cheaders cxxheaders libconfiguration libconsensusservice libdatastoremanager libdbcommon libmodapi loghard
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/mod_tabledb.git")
 
 SharemindAddRepository(mod_tabledb_hdf5
-  DEPENDS boost cxxheaders hdf5 libconsensusservice libdatastoremanager libdbcommon libmodapi libprocessfacility loghard mod_tabledb
+  DEPENDS boost cxxheaders hdf5 libconfiguration libconsensusservice libdatastoremanager libdbcommon libmodapi libprocessfacility loghard mod_tabledb
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/mod_tabledb_hdf5.git")
 
 SharemindAddRepository(facility_loghard
@@ -259,7 +271,7 @@ SharemindAddRepository(mod_executionprofiler
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/mod_executionprofiler.git")
 
 SharemindAddRepository(emulator
-  DEPENDS boost cxxheaders libicontroller libfmodapicxx libmodapicxx libprocessfacility libvmcxx
+  DEPENDS boost cxxheaders libconfiguration libicontroller libfmodapicxx libmodapicxx libprocessfacility librandom libvmcxx
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/emulator.git")
 
 SharemindAddRepository(sbdump

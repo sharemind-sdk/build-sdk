@@ -24,7 +24,7 @@ under `/path/to/this/repository/`.
 Install dependencies:
 
 ```bash
-sudo apt-get install cmake git make gcc g++ libbz2-dev libmpfr-dev libcrypto++-dev libbison-dev flex libtbb-dev libhdf5-dev libboost-filesystem-dev libboost-iostreams-dev libboost-program-options-dev libboost-system-dev libboost-thread-dev help2man
+sudo apt-get install cmake git make gcc g++ libbz2-dev libmpfr-dev libcrypto++-dev libbison-dev flex libhdf5-dev libboost-filesystem-dev libboost-iostreams-dev libboost-program-options-dev libboost-system-dev libboost-thread-dev help2man
 sudo apt-get install --no-install-recommends doxygen
 ```
 
@@ -60,6 +60,7 @@ Requirements:
 * Doxygen
 * libbz2
 * help2man
+* OpenSSL
 
 Some dependencies can be built by this repository and are pulled from the
 [sharemind-sdk/dependencies](https://github.com/sharemind-sdk/dependencies/)

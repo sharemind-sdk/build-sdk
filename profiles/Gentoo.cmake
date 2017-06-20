@@ -22,9 +22,9 @@
 #
 #   dev-vcs/git sys-devel/make \>=dev-util/cmake-2.8.12 dev-libs/boost
 #   sys-devel/gcc dev-libs/glib:2 dev-libs/crypto++ sys-devel/bison
-#   sys-devel/flex dev-libs/mpfr app-doc/doxygen sci-libs/hdf5
+#   sys-devel/flex dev-libs/mpfr app-doc/doxygen
 #
 
 INCLUDE("${CMAKE_CURRENT_SOURCE_DIR}/profiles/common.cmake" REQUIRED)
 
-LIST(REMOVE_ITEM Thing_SKIP exprtk libsortnetwork)
+LIST(REMOVE_ITEM Thing_SKIP cpp_redis exprtk hdf5 libsortnetwork)

@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2015 Cybernetica
+# Copyright (C) Cybernetica
 #
 # Research/Commercial License Usage
 # Licensees holding a valid Research License or Commercial License
@@ -22,7 +22,7 @@
 # least the following dependencies:
 #
 #   cmake git make gcc g++ libbz2-dev libmpfr-dev libcrypto++-dev libbison-dev
-#   flex libtbb-dev libhdf5-dev libboost-filesystem-dev libboost-iostreams-dev
+#   flex libhdf5-dev libboost-filesystem-dev libboost-iostreams-dev
 #   libboost-program-options-dev libboost-system-dev libboost-thread-dev
 #   help2man doxygen
 #
