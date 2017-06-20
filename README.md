@@ -53,7 +53,6 @@ Requirements:
 * GNU make
 * Boost
 * Crypto++
-* Threading Buiding Blocks (TBB)
 * GNU Bison
 * Flex
 * GNU MPFR
