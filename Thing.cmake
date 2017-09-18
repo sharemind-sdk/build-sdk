@@ -294,7 +294,7 @@ FUNCTION(Thing_addFromOverride name)
     IF(update_command)
       SET(Thing_GitUpdateCommand ${update_command})
     ELSE()
-      SET(Thing_GitUpdateCommand "git show-ref --tags ${git_tag} || git show-ref --heads ${git_tag} && ( git fetch && git checkout ${git_tag} && git merge --ff origin/${git_tag} ) || true")
+      SET(Thing_GitUpdateCommand "git show-ref --heads ${git_tag} && git fetch && git checkout ${git_tag} && git merge --ff-only --no-verify-signatures origin/${git_tag} || true")
     ENDIF()
 
     Thing_getArgs_concat("${newArgs}" LOG_DOWNLOAD log_download)
