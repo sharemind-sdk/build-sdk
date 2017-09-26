@@ -175,14 +175,15 @@ FUNCTION(Thing_hasArg args argName out)
 ENDFUNCTION()
 
 # Sets an argument if it is not already set:
-MACRO(Thing_setDefaultArg out args arg)
-  Thing_hasArg("${args}" "${arg}" "${out}")
-  IF("${${out}}")
-    SET(${out} "${args}")
+FUNCTION(Thing_setDefaultArg out args arg)
+  Thing_hasArg("${args}" "${arg}" hasArg)
+  IF("${hasArg}")
+    SET(${out} "${args}" PARENT_SCOPE)
   ELSE()
-    Thing_resetArgs("${args}" "${arg}" "${ARGN}" "${out}")
+    Thing_resetArgs("${args}" "${arg}" "${ARGN}" o)
+    SET("${out}" "${o}" PARENT_SCOPE)
   ENDIF()
-ENDMACRO()
+ENDFUNCTION()
 
 # Constructs a new ExternalProject_Add argument list for an out-of-tree
 # configure and build, e.g configure/cmake && make && make install:
