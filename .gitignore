@@ -12,17 +12,19 @@
 /boost/
 /cryptopp/
 /gmp/
-/libsortnetwork/
 /mpfr/
 
 # Different subprojects:
 /cheaders/
+/cmake-helpers/
 /cxxheaders/
 /emulator/
 /exprtk/
 /facility_datastoremanager/
 /facility_loghard/
+/facility-module-apis/
 /facility_executionprofiler/
+/libaccesscontrolfacility/
 /libas/
 /libconfiguration/
 /libconsensusservice/
@@ -41,6 +43,7 @@
 /librandom/
 /libsoftfloat/
 /libsoftfloat_math/
+/libsortnetwork/
 /libvm/
 /libvmcxx/
 /libvmi/
@@ -53,6 +56,7 @@
 /mod_spdz_fresco_emu/
 /mod_tabledb/
 /mod_tabledb_hdf5/
+/module-apis/
 /pdkheaders/
 /sbdump/
 /secrec/
