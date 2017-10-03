@@ -170,7 +170,7 @@ SharemindAddRepository(libprocessfacility
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libprocessfacility.git")
 
 SharemindAddRepository(facility-module-apis
-  DEPENDS cheaders cmake-helpers module-apis
+  DEPENDS cheaders cmake-helpers libprocessfacility module-apis
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/facility-module-apis.git")
 
 SharemindAddRepository(libfmodapi
@@ -198,7 +198,7 @@ SharemindAddRepository(libconsensusservice
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libconsensusservice.git")
 
 SharemindAddRepository(libdatastoremanager
-  DEPENDS cmake-helpers cxxheaders libprocessfacility
+  DEPENDS cmake-helpers cxxheaders
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libdatastoremanager.git")
 
 SharemindAddRepository(libexecutionmodelevaluator
