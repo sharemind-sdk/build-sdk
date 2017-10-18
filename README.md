@@ -2,29 +2,15 @@
 
 ## Quick start guide
 
-### General
+### Debian Stretch
 
-To quickly build everything handled by this repository (including the
-dependencies), use something like this:
-
-```bash
-cd /path/to/this/repository
-echo 'SET(Thing_SKIP "")' > config.local
-mkdir b
-cd b
-cmake ..
-make
-```
-
-After this, everything should already be installed in the `prefix/` subdirectory
-under `/path/to/this/repository/`.
-
-### Debian Jessie
-
-Install dependencies:
+Install the dependencies:
 
 ```bash
-sudo apt-get install cmake git make gcc g++ libbz2-dev libmpfr-dev libcrypto++-dev libbison-dev flex libhdf5-dev libboost-filesystem-dev libboost-iostreams-dev libboost-program-options-dev libboost-system-dev libboost-thread-dev help2man
+sudo apt-get install bison cmake doxygen flex g++ gcc git libboost-dev libboost-filesystem-dev
+libboost-iostreams-dev libboost-program-options-dev libboost-system-dev libbz2-dev
+libcrypto++-dev libgmp-dev libgnutls28-dev libhdf5-dev libmpfr-dev libssl-dev
+m4 make nettle-dev patch pkg-config xz-utils
 sudo apt-get install --no-install-recommends doxygen
 ```
 
@@ -32,7 +18,7 @@ Build Sharemind SDK:
 ```bash
 git clone https://github.com/sharemind-sdk/build-sdk.git
 cd build-sdk
-echo 'INCLUDE("${CMAKE_CURRENT_SOURCE_DIR}/profiles/DebianJessie.cmake" REQUIRED)' > config.local
+echo 'INCLUDE("${CMAKE_CURRENT_SOURCE_DIR}/profiles/DebianStretch.cmake" REQUIRED)' > config.local
 mkdir b
 cd b
 cmake ..
@@ -65,6 +51,14 @@ Requirements:
 Some dependencies can be built by this repository and are pulled from the
 [sharemind-sdk/dependencies](https://github.com/sharemind-sdk/dependencies/)
 repository.
+
+To include the installation of these dependencies to the build, configure the build
+as follows:
+
+```bash
+cd /path/to/this/repository
+echo 'SET(Thing_SKIP "")' > config.local
+```
 
 For more complex builds, see
 [`config.local.example`](https://github.com/sharemind-sdk/build-sdk/blob/master/config.local.example).
