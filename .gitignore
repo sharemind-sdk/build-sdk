@@ -13,6 +13,7 @@
 /cryptopp/
 /gmp/
 /mpfr/
+/hdf5/
 
 # Different subprojects:
 /cheaders/
