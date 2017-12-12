@@ -162,7 +162,7 @@ SharemindAddRepository(libmodapi
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libmodapi.git")
 
 SharemindAddRepository(libmodapicxx
-  DEPENDS cmake-helpers libmodapi
+  DEPENDS cmake-helpers cxxheaders libmodapi
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libmodapicxx.git")
 
 SharemindAddRepository(libprocessfacility
@@ -182,12 +182,8 @@ SharemindAddRepository(libfmodapicxx
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libfmodapicxx.git")
 
 SharemindAddRepository(libvm
-  DEPENDS cheaders cmake-helpers libexecutable libmodapi libsoftfloat libvmi module-apis vm_m4
+  DEPENDS cheaders cmake-helpers cxxheaders libexecutable libmodapi libsoftfloat libvmi module-apis vm_m4
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libvm.git")
-
-SharemindAddRepository(libvmcxx
-  DEPENDS cmake-helpers cxxheaders libvm
-  GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libvmcxx.git")
 
 SharemindAddRepository(loghard
   DEPENDS cheaders cmake-helpers cxxheaders
@@ -247,7 +243,7 @@ SharemindAddRepository(mod_aby_emu
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/mod_aby_emu.git")
 
 SharemindAddRepository(mod_spdz_fresco_emu
-  DEPENDS boost cheaders cxxheaders libemulator_protocols libexecutionmodelevaluator libexecutionprofiler libmodapi loghard pdkheaders
+  DEPENDS boost cheaders cmake-helpers cxxheaders libemulator_protocols libexecutionmodelevaluator libexecutionprofiler libmodapi loghard module-apis pdkheaders
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/mod_spdz_fresco_emu.git")
 
 SharemindAddRepository(libdbcommon
@@ -283,7 +279,7 @@ SharemindAddRepository(mod_executionprofiler
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/mod_executionprofiler.git")
 
 SharemindAddRepository(emulator
-  DEPENDS boost cmake-helpers cxxheaders libaccesscontrolfacility libconfiguration libfmodapicxx libicontroller libmodapicxx libprocessfacility librandom libvmcxx
+  DEPENDS boost cmake-helpers cxxheaders libaccesscontrolfacility libconfiguration libfmodapicxx libicontroller libmodapicxx libprocessfacility librandom libvm 
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/emulator.git")
 
 SharemindAddRepository(sbdump
@@ -298,9 +294,9 @@ SharemindAddRepository(secrec
   DEPENDS boost cheaders cmake-helpers libas mpfr
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/secrec.git")
 
-SharemindAddRepository(stdlib
-  DEPENDS secrec
-  GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/stdlib.git")
+SharemindAddRepository(secrec-stdlib
+  DEPENDS cmake-helpers secrec
+  GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/secrec-stdlib.git")
 
 UNSET(SHAREMIND_REPOSITORIES_ROOT)
 UNSET(SHAREMIND_DEPENDENCIES_ROOT)

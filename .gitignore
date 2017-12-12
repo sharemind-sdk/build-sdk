@@ -61,7 +61,7 @@
 /pdkheaders/
 /sbdump/
 /secrec/
-/stdlib/
+/secrec-stdlib/
 /vm_m4/
 
 # Different temporary build directories (user-specific):
