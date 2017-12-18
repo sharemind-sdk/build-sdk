@@ -23,9 +23,9 @@
 #
 #   bison cmake doxygen flex g++ gcc git libboost-dev libboost-filesystem-dev
 #   libboost-iostreams-dev libboost-program-options-dev libboost-system-dev
-#   libcrypto++-dev libgmp-dev libgnutls28-dev libhdf5-dev libmpfr-dev libssl-dev
-#   m4 make nettle-dev patch pkg-config xz-utils
+#   libcrypto++-dev libgmp-dev libgnutls28-dev libhdf5-dev libhiredis-dev
+#   libmpfr-dev libssl-dev m4 make nettle-dev patch pkg-config xz-utils
 
 INCLUDE("${CMAKE_CURRENT_SOURCE_DIR}/profiles/common.cmake" REQUIRED)
 
-LIST(REMOVE_ITEM Thing_SKIP cpp_redis exprtk)
+LIST(REMOVE_ITEM Thing_SKIP exprtk)
