@@ -7,7 +7,7 @@
 Install the dependencies:
 
 ```bash
-sudo apt-get install bison cmake doxygen flex g++ gcc git libboost-dev libboost-filesystem-dev libboost-iostreams-dev libboost-program-options-dev libboost-system-dev libbz2-dev libcrypto++-dev libgmp-dev libgnutls28-dev libhdf5-dev libmpfr-dev libssl-dev m4 make nettle-dev patch pkg-config xz-utils
+sudo apt-get install bison cmake doxygen flex g++ gcc git libboost-dev libboost-filesystem-dev libboost-iostreams-dev libboost-program-options-dev libboost-system-dev libbz2-dev libcrypto++-dev libgmp-dev libgnutls28-dev libhdf5-dev libhiredis-dev libmpfr-dev libssl-dev m4 make nettle-dev patch pkg-config xz-utils
 sudo apt-get install --no-install-recommends doxygen
 ```
 
@@ -40,6 +40,7 @@ Requirements:
 * Flex
 * GNU MPFR
 * HDF5
+* Hiredis
 * Doxygen
 * libbz2
 * help2man
