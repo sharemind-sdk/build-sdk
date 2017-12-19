@@ -109,14 +109,6 @@ SharemindAddExternalDependency(hdf5
                                 "--without-zlib"
   BUILD_IN_SOURCE 1)
 
-SharemindAddExternalDependency(cpp_redis
-  URL "https://github.com/Cylix/cpp_redis/tarball/e4d9568121340485b1126d0a40538718297cab11"
-  DOWNLOAD_NAME "cpp_redis.tar.gz"
-  URL_HASH SHA512=538015faf3706971f93e4d811ff26331ae99f87c146e91dbc55d1e6097345726922506ad4bb262cb8dbb98115b363c4280df8d35d862fb6692903564a12b8fdd
-  PATCH_COMMAND patch -p1 <
-                "${CMAKE_CURRENT_SOURCE_DIR}/patches/cpp_redis-gcc7.patch"
-  )
-
 SharemindAddRepository(cmake-helpers
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/cmake-helpers.git")
 
@@ -251,7 +243,7 @@ SharemindAddRepository(libdbcommon
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libdbcommon.git")
 
 SharemindAddRepository(mod_keydb
-  DEPENDS boost cmake-helpers cpp_redis libconsensusservice libdatastoremanager libprocessfacility loghard module-apis pdkheaders
+  DEPENDS boost cmake-helpers libconsensusservice libdatastoremanager libprocessfacility loghard module-apis pdkheaders
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/mod_keydb.git")
 
 SharemindAddRepository(mod_tabledb

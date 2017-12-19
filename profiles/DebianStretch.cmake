@@ -28,4 +28,4 @@
 
 INCLUDE("${CMAKE_CURRENT_SOURCE_DIR}/profiles/common.cmake" REQUIRED)
 
-LIST(REMOVE_ITEM Thing_SKIP cpp_redis exprtk)
+LIST(REMOVE_ITEM Thing_SKIP exprtk)

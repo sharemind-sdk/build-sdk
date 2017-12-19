@@ -8,7 +8,6 @@
 /config.local
 
 # Different dependencies:
-/cpp_redis/
 /boost/
 /cryptopp/
 /gmp/
