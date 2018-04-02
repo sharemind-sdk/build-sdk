@@ -210,10 +210,6 @@ SharemindAddRepository(mod_algorithms
   DEPENDS cheaders cmake-helpers cxxheaders libsoftfloat libsoftfloat_math libsortnetwork module-apis
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/mod_algorithms.git")
 
-SharemindAddRepository(libicontroller
-  DEPENDS cmake-helpers cxxheaders
-  GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libicontroller.git")
-
 SharemindAddRepository(libconfiguration
   DEPENDS boost cmake-helpers cxxheaders
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libconfiguration.git")
@@ -271,7 +267,7 @@ SharemindAddRepository(mod_executionprofiler
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/mod_executionprofiler.git")
 
 SharemindAddRepository(emulator
-  DEPENDS boost cmake-helpers cxxheaders libaccesscontrolprocessfacility libconfiguration libfmodapicxx libicontroller libmodapicxx libprocessfacility librandom libvm
+  DEPENDS boost cmake-helpers cxxheaders libaccesscontrolprocessfacility libconfiguration libfmodapicxx libmodapicxx libprocessfacility librandom libvm
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/emulator.git")
 
 SharemindAddRepository(sbdump
@@ -283,7 +279,7 @@ SharemindAddRepository(libas
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libas.git")
 
 SharemindAddRepository(secrec
-  DEPENDS boost cheaders cmake-helpers libas mpfr
+  DEPENDS boost cheaders cmake-helpers cxxheaders libas mpfr
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/secrec.git")
 
 SharemindAddRepository(secrec-stdlib
