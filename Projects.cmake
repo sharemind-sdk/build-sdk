@@ -178,7 +178,7 @@ SharemindAddRepository(libvm
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libvm.git")
 
 SharemindAddRepository(loghard
-  DEPENDS cheaders cmake-helpers cxxheaders
+  DEPENDS boost cheaders cmake-helpers cxxheaders
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/loghard.git")
 
 SharemindAddRepository(libconsensusservice
@@ -239,15 +239,15 @@ SharemindAddRepository(libdbcommon
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libdbcommon.git")
 
 SharemindAddRepository(mod_keydb
-  DEPENDS boost cmake-helpers libconsensusservice libdatastoremanager libprocessfacility loghard module-apis pdkheaders
+  DEPENDS boost cmake-helpers libaccesscontrolprocessfacility libconsensusservice libdatastoremanager libprocessfacility loghard module-apis pdkheaders
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/mod_keydb.git")
 
 SharemindAddRepository(mod_tabledb
-  DEPENDS boost cheaders cmake-helpers cxxheaders libaccesscontrolprocessfacility libconfiguration libconsensusservice libdatastoremanager libdbcommon libmodapi loghard module-apis
+  DEPENDS boost cheaders cmake-helpers cxxheaders libaccesscontrolprocessfacility libconfiguration libconsensusservice libdatastoremanager libdbcommon libmodapi libprocessfacility loghard module-apis
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/mod_tabledb.git")
 
 SharemindAddRepository(mod_tabledb_hdf5
-  DEPENDS boost cmake-helpers cxxheaders hdf5 libaccesscontrolprocessfacility libconfiguration libconsensusservice libdatastoremanager libdbcommon libprocessfacility loghard mod_tabledb module-apis
+  DEPENDS boost cmake-helpers cxxheaders hdf5 libconfiguration libconsensusservice libdatastoremanager libdbcommon libprocessfacility loghard mod_tabledb module-apis
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/mod_tabledb_hdf5.git")
 
 SharemindAddRepository(facility_loghard
@@ -271,7 +271,7 @@ SharemindAddRepository(emulator
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/emulator.git")
 
 SharemindAddRepository(sbdump
-  DEPENDS cheaders cmake-helpers libexecutable libvmi
+  DEPENDS cheaders cmake-helpers cxxheaders libexecutable libvmi loghard
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/sbdump.git")
 
 SharemindAddRepository(libas
