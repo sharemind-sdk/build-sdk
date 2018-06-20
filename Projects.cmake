@@ -138,11 +138,11 @@ SharemindAddRepository(vm_m4
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/vm_m4.git")
 
 SharemindAddRepository(libvmi
-  DEPENDS cheaders cmake-helpers vm_m4
+  DEPENDS cmake-helpers cxxheaders vm_m4
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libvmi.git")
 
 SharemindAddRepository(libexecutable
-  DEPENDS cheaders cmake-helpers
+  DEPENDS cmake-helpers cxxheaders
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libexecutable.git")
 
 SharemindAddRepository(module-apis
@@ -166,7 +166,7 @@ SharemindAddRepository(facility-module-apis
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/facility-module-apis.git")
 
 SharemindAddRepository(libfmodapi
-  DEPENDS cheaders cmake-helpers facility-module-apis libmodapi libprocessfacility module-apis
+  DEPENDS cmake-helpers cxxheaders facility-module-apis
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libfmodapi.git")
 
 SharemindAddRepository(libfmodapicxx
@@ -174,7 +174,7 @@ SharemindAddRepository(libfmodapicxx
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libfmodapicxx.git")
 
 SharemindAddRepository(libvm
-  DEPENDS cheaders cmake-helpers cxxheaders libexecutable libmodapi libsoftfloat libvmi module-apis vm_m4
+  DEPENDS cheaders cmake-helpers cxxheaders libexecutable libsoftfloat libvmi vm_m4
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libvm.git")
 
 SharemindAddRepository(loghard
@@ -255,11 +255,11 @@ SharemindAddRepository(facility_loghard
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/facility_loghard.git")
 
 SharemindAddRepository(facility_executionprofiler
-  DEPENDS cmake-helpers facility-module-apis libexecutionprofiler loghard
+  DEPENDS cmake-helpers cxxheaders facility-module-apis libexecutionprofiler loghard
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/facility_executionprofiler.git")
 
 SharemindAddRepository(facility_datastoremanager
-  DEPENDS cmake-helpers cxxheaders facility-module-apis libdatastoremanager
+  DEPENDS cmake-helpers facility-module-apis libdatastoremanager
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/facility_datastoremanager.git")
 
 SharemindAddRepository(mod_executionprofiler
