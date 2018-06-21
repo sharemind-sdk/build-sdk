@@ -113,7 +113,7 @@ SharemindAddRepository(cmake-helpers
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/cmake-helpers.git")
 
 SharemindAddRepository(libsoftfloat
-  DEPENDS cmake-helpers
+  DEPENDS cheaders cmake-helpers
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libsoftfloat.git")
 
 SharemindAddRepository(cheaders
@@ -275,7 +275,7 @@ SharemindAddRepository(sbdump
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/sbdump.git")
 
 SharemindAddRepository(libas
-  DEPENDS cheaders cmake-helpers libexecutable libvmi vm_m4
+  DEPENDS cheaders cmake-helpers libexecutable libvmi
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libas.git")
 
 SharemindAddRepository(secrec
