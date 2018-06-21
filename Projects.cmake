@@ -112,13 +112,13 @@ SharemindAddExternalDependency(hdf5
 SharemindAddRepository(cmake-helpers
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/cmake-helpers.git")
 
-SharemindAddRepository(libsoftfloat
-  DEPENDS cheaders cmake-helpers
-  GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libsoftfloat.git")
-
 SharemindAddRepository(cheaders
   DEPENDS boost cmake-helpers
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/cheaders.git")
+
+SharemindAddRepository(libsoftfloat
+  DEPENDS cheaders cmake-helpers
+  GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libsoftfloat.git")
 
 SharemindAddRepository(libsoftfloat_math
   DEPENDS cheaders cmake-helpers libsoftfloat
