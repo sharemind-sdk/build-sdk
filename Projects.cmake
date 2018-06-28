@@ -169,10 +169,6 @@ SharemindAddRepository(libfmodapi
   DEPENDS cmake-helpers cxxheaders facility-module-apis
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libfmodapi.git")
 
-SharemindAddRepository(libfmodapicxx
-  DEPENDS cmake-helpers cxxheaders libfmodapi libmodapicxx
-  GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libfmodapicxx.git")
-
 SharemindAddRepository(libvm
   DEPENDS cheaders cmake-helpers cxxheaders libexecutable libsoftfloat libvmi vm_m4
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libvm.git")
@@ -267,7 +263,7 @@ SharemindAddRepository(mod_executionprofiler
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/mod_executionprofiler.git")
 
 SharemindAddRepository(emulator
-  DEPENDS boost cmake-helpers cxxheaders libaccesscontrolprocessfacility libconfiguration libfmodapicxx libmodapicxx libprocessfacility librandom libvm
+  DEPENDS boost cmake-helpers cxxheaders libaccesscontrolprocessfacility libconfiguration libfmodapi libmodapicxx libprocessfacility librandom libvm
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/emulator.git")
 
 SharemindAddRepository(sbdump
