@@ -26,6 +26,34 @@ PROJECT(SHAREMIND_APPSERV_BUILD NONE)
 INCLUDE(Thing.cmake)
 Thing_addKeywords(SHAREMIND_TYPE SHAREMIND_CHECK_COMMAND)
 
+MESSAGE(STATUS "CMake version detected: ${CMAKE_VERSION}")
+IF("${CMAKE_VERSION}" VERSION_LESS "3.11")
+  MESSAGE(STATUS "Also building CMake 3.11.4 for targets.")
+  SET(SHAREMIND_CMAKE_INSTALL_DIR "${CMAKE_CURRENT_BINARY_DIR}/newCMake")
+  SET(SHAREMIND_CMAKE_BIN "${SHAREMIND_CMAKE_INSTALL_DIR}/bin/cmake")
+  Thing_add(cmake
+    URL "${SHAREMIND_DEPENDENCIES_ROOT}/cmake-3.11.4.tar.gz"
+    URL_HASH SHA512=c5d03ad66a004292038e49e391c390ebc328fbb089ea699742a9b75f0ada9398c3dc971b868f75d8438bf437ecbeaa62541beb53cae14a699bf244ad101a2290
+    URL_MD5 72e168b3bad2f9c34dcebbad7af56ff0
+    INSTALL_DIR "${SHAREMIND_CMAKE_INSTALL_DIR}"
+    CONFIGURE_COMMAND
+      "${CMAKE_CURRENT_SOURCE_DIR}/cmake/bootstrap"
+      "--no-qt-gui"
+      "--verbose"
+      "--prefix=${SHAREMIND_CMAKE_INSTALL_DIR}"
+  )
+  FUNCTION(SetNewerCMake out)
+    Thing_resetArgs("${ARGN}" CMAKE_COMMAND "${SHAREMIND_CMAKE_BIN}" args)
+    Thing_getArgs_concat("${args}" DEPENDS deps)
+    LIST(APPEND deps "cmake")
+    Thing_resetArgs("${args}" DEPENDS "${deps}" args)
+    SET("${out}" "${args}" PARENT_SCOPE)
+  ENDFUNCTION()
+ELSE()
+  SET(SHAREMIND_CMAKE_BIN "${CMAKE_COMMAND}")
+ENDIF()
+FILE(WRITE "${CMAKE_CURRENT_BINARY_DIR}/cmake_binary.txt" "${SHAREMIND_CMAKE_BIN}\n")
+
 IF(NOT DEFINED SHAREMIND_PROJECTFILE)
   SET(SHAREMIND_PROJECTFILE "${CMAKE_CURRENT_SOURCE_DIR}/Projects.cmake")
 ENDIF()
@@ -196,7 +224,12 @@ ENDIF()
 
 # Add targets to build:
 MACRO(SharemindAdd name type)
-  Thing_resetArgs("${ARGN}" SHAREMIND_TYPE "${type}" a)
+  IF(COMMAND SetNewerCMake)
+    SetNewerCMake(a ${ARGN})
+  ELSE()
+    SET(a "${ARGN}")
+  ENDIF()
+  Thing_resetArgs("${a}" SHAREMIND_TYPE "${type}" a)
   Thing_add("${name}" ${a})
   IF(DEFINED "SHAREMIND_CHECK_COMMAND_${name}")
     Thing_getProperty("${name}" binary_dir a)

@@ -9,6 +9,7 @@
 
 # Different dependencies:
 /boost/
+/cmake/
 /cryptopp/
 /gmp/
 /mpfr/
