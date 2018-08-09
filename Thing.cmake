@@ -261,7 +261,9 @@ FUNCTION(Thing_addFromOverride name)
   ENDFOREACH()
 
   IF(NOT git_repository)
-    ExternalProject_Add("${name}" "${newArgs}")
+    # Add a non git external dependency using ExternalProject_Add with a dummy UPDATE_COMMAND
+    # Otherwise UPDATE_COMMAND for http dependencies defaults to none causing changes to installed files not to trigger a reinstall
+    ExternalProject_Add("${name}" "${newArgs}" UPDATE_COMMAND ${CMAKE_COMMAND} -E echo Update)
   ELSE()
     Thing_removeArgs("${newArgs}" UPDATE_COMMAND newArgs)
     Thing_removeArgs("${newArgs}" DOWNLOAD_COMMAND newArgs)
