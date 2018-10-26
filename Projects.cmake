@@ -186,7 +186,7 @@ SharemindAddRepository(librandom
   SHAREMIND_CHECK_COMMAND $(MAKE) check)
 
 SharemindAddRepository(libsortnetwork
-  DEPENDS cmake-helpers
+  DEPENDS cmake-helpers cxxheaders
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libsortnetwork.git")
 
 SharemindAddRepository(mod_algorithms
