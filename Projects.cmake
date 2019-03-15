@@ -269,5 +269,9 @@ SharemindAddRepository(secrec-stdlib
   DEPENDS cmake-helpers secrec
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/secrec-stdlib.git")
 
+SharemindAddRepository(qtcreator-plugin-sharemind-mpc
+  DEPENDS cmake-helpers
+  GIT_REPOSITORY "${REPO_ROOT}/qtcreator-plugin-sharemind-mpc.git")
+
 UNSET(SHAREMIND_REPOSITORIES_ROOT)
 UNSET(SHAREMIND_DEPENDENCIES_ROOT)
