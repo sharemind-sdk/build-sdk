@@ -34,6 +34,13 @@ INCLUDE("${CMAKE_CURRENT_SOURCE_DIR}/profiles/common.cmake" REQUIRED)
 #   SET(SHAREMIND_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/prefix")
 #
 
+#
+# To build NodeJS based projects (e.g. profile_log_visualizer) set
+# SET(SHAREMIND_EXCLUDE_NODE FALSE)
+#
+# Use a different npm registry
+# SET(SHAREMIND_NPM_REGISTRY http://example.com )
+#
 
 #
 # To override aspects of building the subtargets, define a macro or function

@@ -58,6 +58,10 @@ cd /path/to/this/repository
 echo 'SET(Thing_SKIP "")' > config.local
 ```
 
+Building [sharemind-sdk/profile_log_visualizer](https://github.com/sharemind-sdk/profile_log_visualizer/)
+requires NodeJS >= v4.8.2 and npm >= 3.10 Building it is disabled by default,
+refer to example configuration for enabling it.
+
 For more complex builds, see
 [`config.local.example`](https://github.com/sharemind-sdk/build-sdk/blob/master/config.local.example).
 

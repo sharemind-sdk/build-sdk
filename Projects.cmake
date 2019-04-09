@@ -273,5 +273,14 @@ SharemindAddRepository(qtcreator-plugin-sharemind-mpc
   DEPENDS cmake-helpers
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/qtcreator-plugin-sharemind-mpc.git")
 
+IF(NOT DEFINED SHAREMIND_EXCLUDE_NODE)
+  SET(SHAREMIND_EXCLUDE_NODE 1)
+ENDIF()
+
+SharemindAddRepository(profile_log_visualizer
+  DEPENDS cmake-helpers
+  GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/profile_log_visualizer.git"
+  EXCLUDE_FROM_ALL ${SHAREMIND_EXCLUDE_NODE})
+
 UNSET(SHAREMIND_REPOSITORIES_ROOT)
 UNSET(SHAREMIND_DEPENDENCIES_ROOT)
