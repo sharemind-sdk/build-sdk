@@ -162,7 +162,8 @@ SharemindAddRepository(libvm
 
 SharemindAddRepository(loghard
   DEPENDS boost cheaders cmake-helpers cxxheaders
-  GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/loghard.git")
+  GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/loghard.git"
+  SHAREMIND_CHECK_COMMAND $(MAKE) check)
 
 SharemindAddRepository(libconsensusservice
   DEPENDS cmake-helpers
