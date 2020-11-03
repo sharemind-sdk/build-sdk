@@ -169,8 +169,12 @@ SharemindAddRepository(libconsensusservice
   DEPENDS cmake-helpers
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libconsensusservice.git")
 
+SharemindAddRepository(data-store-api
+  DEPENDS cmake-helpers
+  GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/data-store-api.git")
+
 SharemindAddRepository(libdatastoremanager
-  DEPENDS cmake-helpers cxxheaders
+  DEPENDS cmake-helpers cxxheaders data-store-api
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libdatastoremanager.git")
 
 SharemindAddRepository(libexecutionmodelevaluator
@@ -223,15 +227,15 @@ SharemindAddRepository(libdbcommon
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/libdbcommon.git")
 
 SharemindAddRepository(mod_keydb
-  DEPENDS boost cmake-helpers libaccesscontrolprocessfacility libconsensusservice libdatastoremanager libprocessfacility loghard module-apis pdkheaders
+  DEPENDS boost cmake-helpers data-store-api libaccesscontrolprocessfacility libconsensusservice libprocessfacility loghard module-apis pdkheaders
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/mod_keydb.git")
 
 SharemindAddRepository(mod_tabledb
-  DEPENDS boost cheaders cmake-helpers cxxheaders libaccesscontrolprocessfacility libconfiguration libconsensusservice libdatastoremanager libdbcommon libmodapi libprocessfacility loghard module-apis
+  DEPENDS boost cheaders cmake-helpers cxxheaders data-store-api libaccesscontrolprocessfacility libconfiguration libconsensusservice libdbcommon libmodapi libprocessfacility loghard module-apis
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/mod_tabledb.git")
 
 SharemindAddRepository(mod_tabledb_hdf5
-  DEPENDS boost cmake-helpers cxxheaders hdf5 libconfiguration libconsensusservice libdatastoremanager libdbcommon libprocessfacility loghard mod_tabledb module-apis
+  DEPENDS boost cmake-helpers cxxheaders data-store-api hdf5 libconfiguration libconsensusservice libdbcommon libprocessfacility loghard mod_tabledb module-apis
   GIT_REPOSITORY "${SHAREMIND_REPOSITORIES_ROOT}/mod_tabledb_hdf5.git")
 
 SharemindAddRepository(facility_loghard

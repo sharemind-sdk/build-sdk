@@ -19,6 +19,7 @@
 /cheaders/
 /cmake-helpers/
 /cxxheaders/
+/data-store-api/
 /emulator/
 /exprtk/
 /facility_datastoremanager/
