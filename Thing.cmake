@@ -367,10 +367,6 @@ ENDMACRO()
 
 SET(Thing_ListSeparator "~~...~~")
 
-MACRO(Thing_prefixPaths out)
-  Thing_join("${out}" "${Thing_ListSeparator}" ${CMAKE_PREFIX_PATH})
-ENDMACRO()
-
 FUNCTION(Thing_add name)
   IF(DEFINED Thing_add_HELP_I_am_trapped_in_a_recursive_loop)
     SET(m "Unexpected Thing_add() recursion detected!!! Did you call")
