@@ -2,12 +2,12 @@
 
 ## Quick start guide
 
-### Debian Stretch
+### Debian Bullseye
 
 Install the dependencies:
 
 ```bash
-sudo apt-get install bison cmake doxygen flex g++ gcc git libboost-dev libboost-filesystem-dev libboost-iostreams-dev libboost-program-options-dev libboost-system-dev libbz2-dev libcrypto++-dev libgmp-dev libgnutls28-dev libhdf5-dev libhiredis-dev libmpfr-dev libssl-dev m4 make nettle-dev patch pkg-config xz-utils
+sudo apt-get install bison cmake doxygen flex g++ gcc git libboost-dev libboost-filesystem-dev libboost-iostreams-dev libboost-program-options-dev libboost-system-dev libcrypto++-dev libhdf5-dev libhiredis-dev libmpfr-dev m4 make
 sudo apt-get install --no-install-recommends doxygen
 ```
 
@@ -15,7 +15,7 @@ Build Sharemind SDK:
 ```bash
 git clone https://github.com/sharemind-sdk/build-sdk.git
 cd build-sdk
-echo 'INCLUDE("${CMAKE_CURRENT_SOURCE_DIR}/profiles/DebianStretch.cmake" REQUIRED)' > config.local
+echo 'INCLUDE("${CMAKE_CURRENT_SOURCE_DIR}/profiles/DebianBullseye.cmake" REQUIRED)' > config.local
 mkdir b
 cd b
 cmake ..
@@ -26,25 +26,6 @@ After this, everything should already be installed in the `prefix/` subdirectory
 under `/path/to/this/repository/`.
 
 ## Detailed build instructions
-
-Requirements:
-
-* Linux or BSD based OS with 64-bit architecture
-* Git
-* C++ toolchain (gcc 4.7 or above, clang 3.4 or above)
-* CMake (2.8.12 or above)
-* GNU make
-* Boost
-* Crypto++
-* GNU Bison
-* Flex
-* GNU MPFR
-* HDF5
-* Hiredis
-* Doxygen
-* libbz2
-* help2man
-* OpenSSL
 
 Some dependencies can be built by this repository and are pulled from the
 [sharemind-sdk/dependencies](https://github.com/sharemind-sdk/dependencies/)
@@ -59,8 +40,7 @@ echo 'SET(Thing_SKIP "")' > config.local
 ```
 
 Building [sharemind-sdk/profile_log_visualizer](https://github.com/sharemind-sdk/profile_log_visualizer/)
-requires NodeJS >= v4.8.2 and npm >= 3.10 Building it is disabled by default,
-refer to example configuration for enabling it.
+is disabled by default, refer to example configuration for enabling it.
 
 For more complex builds, see
 [`config.local.example`](https://github.com/sharemind-sdk/build-sdk/blob/master/config.local.example).
