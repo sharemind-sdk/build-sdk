@@ -309,11 +309,19 @@ FUNCTION(Thing_addFromOverride name)
     #
     SET(module)
     SET(tag)
-    CONFIGURE_FILE(
-      "${CMAKE_ROOT}/Modules/RepositoryInfo.txt.in"
-      "${stamp_dir}/${name}-gitinfo.txt"
-      @ONLY
-    )
+    IF("${CMAKE_VERSION}" VERSION_LESS "3.23.0")
+      CONFIGURE_FILE(
+        "${CMAKE_ROOT}/Modules/RepositoryInfo.txt.in"
+        "${stamp_dir}/${name}-gitinfo.txt"
+        @ONLY
+      )
+    ELSE()
+      CONFIGURE_FILE(
+        "${CMAKE_ROOT}/Modules/ExternalProject/RepositoryInfo.txt.in"
+        "${stamp_dir}/${name}-gitinfo.txt"
+        @ONLY
+      )
+    ENDIF()
 
     Thing_writeGitDownloadScript(${tmp_dir}/${name}-gitclone.cmake ${source_dir}
       git ${git_repository} ${git_tag} ${src_name} ${work_dir}
